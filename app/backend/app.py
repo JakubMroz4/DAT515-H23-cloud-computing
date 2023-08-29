@@ -15,8 +15,8 @@ def get_data():
         'Assignment': "1"
     }
 
-@app.route('/comment',methods = ['POST', 'GET'])
-def comment():
+#@app.route('/comment',methods = ['POST', 'GET'])
+#def comment():
     
 
 if __name__ == "__main__":
