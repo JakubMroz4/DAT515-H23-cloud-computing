@@ -25,7 +25,6 @@ function App() {
   return (
     <div className="App">
             <header className="App-header">
-                <h1></h1>
                 {/* calling data from backend */}
                 <p>Course: {data.course}</p>
                 <p>Semester: {data.semester}</p>
