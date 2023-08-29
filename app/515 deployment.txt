@@ -1,0 +1,27 @@
+
+
+BUILDING
+docker build --tag flask_app .
+docker build --tag react_app .
+
+
+RUNNING
+docker run -dp 5000:5000 --name flask_container flask_app:latest
+
+docker run -dp 3000:3000 --name react_container react_app:latest
+http://localhost:3000
+
+
+docker run -dp 5000:5000 --name backend jakubmroz4/backend:latest
+
+docker run -dp 3000:3000 --name frontend jakubmroz4/frontend:latest
+
+
+DOCKER COMPOSE
+docker-compose build
+docker-compose up
+
+DOCKER HUB
+docker push jakubmroz4/app-backend
+
+

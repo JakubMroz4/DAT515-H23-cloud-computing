@@ -3,20 +3,20 @@ import './App.css';
 
 function App() {
     const [data, setdata] = useState({
-        course: "",
+        name: "",
+        code: "",
         semester: "",
-        assignment: "",
     });
 
     useEffect(() => {
       // fetching from flask server
-      fetch("/get_data").then((res) =>
+      fetch("http://localhost:5000/get_data").then((res) =>
           res.json().then((data) => {
               // setting the data
               setdata({
-                  course: data.Course,
-                  semester: data.Semester,
-                  assignment: data.Assignment,
+                    name: data.courses[0].name,
+                    code: data.courses[0].code,
+                    semester: data.courses[0].semester,
               });
           })
       );
@@ -26,9 +26,9 @@ function App() {
     <div className="App">
             <header className="App-header">
                 {/* calling data from backend */}
-                <p>Course: {data.course}</p>
+                <p>Course: {data.name}</p>
+                <p>Course code: {data.code}</p>
                 <p>Semester: {data.semester}</p>
-                <p>Assignment number: #{data.assignment}</p>
  
             </header>
         </div>
