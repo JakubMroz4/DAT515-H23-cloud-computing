@@ -10,7 +10,7 @@ function App() {
 
     useEffect(() => {
       // fetching from flask server
-      fetch("http://localhost:5000/get_data").then((res) =>
+      fetch(process.env.REACT_APP_APIURL + "/get_data").then((res) =>
           res.json().then((data) => {
               // setting the data
               setdata({

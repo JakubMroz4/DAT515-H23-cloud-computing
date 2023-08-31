@@ -17,6 +17,7 @@ services:
       - node-modules:/frontend/node_modules
     environment:
       - NODE_ENV=development
+      - REACT_APP_APIURL=http://localhost:5000
     ports:
       - '3000:3000'
     depends_on:
