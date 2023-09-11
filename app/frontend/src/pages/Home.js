@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 
 function App() {
     const [data, setdata] = useState({
@@ -25,8 +22,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-            <header className="App-header">
+    <div className="Home">
+            <header className="Home-header">
                 {/* calling data from backend */}
                 <p>Course: {data.name}</p>
                 <p>Course code: {data.code}</p>
