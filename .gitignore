@@ -1,3 +1,8 @@
-app/node_modules
+
 app/backend/.idea/misc.xml
 app/backend/.idea/backend.iml
+app/.idea/app.iml
+app/.idea/misc.xml
+app/.idea/inspectionProfiles/profiles_settings.xml
+app/.idea/vcs.xml
+app/.idea/modules.xml
