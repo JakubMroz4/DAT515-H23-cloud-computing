@@ -22,8 +22,8 @@ function App() {
   }, []);
 
   return (
-    <div className="Home">
-            <header className="Home-header">
+    <div className="body">
+            <header className="Body">
                 {/* calling data from backend */}
                 <p>Course: {data.name}</p>
                 <p>Course code: {data.code}</p>
