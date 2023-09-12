@@ -1,6 +1,6 @@
 services:
   backend:
-    build: backend
+    image: jakubmroz4/backend3
     command: ["flask", "run", "--host=0.0.0.0"]
     volumes:
       - ./backend:/app
@@ -10,7 +10,7 @@ services:
       - "5000:5000"
 
   frontend:
-    build: frontend
+    image: jakubmroz4/frontend3
     command: ["npm", "start"]
     volumes:
       - ./frontend:/app

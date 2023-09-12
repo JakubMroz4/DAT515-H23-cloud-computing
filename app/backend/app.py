@@ -41,7 +41,7 @@ def get_data():
 @app.route('/add_data', methods=["POST"])
 def add_data():
     data = request.get_json(force=True)
-    print(data["email"])
+    #print(data["email"])
 
     # valid cors response
     response = make_response(jsonify(data))
@@ -50,6 +50,11 @@ def add_data():
     send_mail("g02946888@gmail.com", [data["email"]])
     return response, 200
 
+
+# health check
+@app.route('/health')
+def health():
+    return "Liveness check completed", 200
 
 def send_mail(sender, recipients):
     msg = Message('Newsletter Group16', sender=sender, recipients=recipients)

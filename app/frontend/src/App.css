@@ -43,7 +43,22 @@
   margin-right: 10%;
 }
 
+.app {  
+  background-color: azure;
+}
+
 .form {
   max-width: 700px;
   margin: auto;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #6e8ec2;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }

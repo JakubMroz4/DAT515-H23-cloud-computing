@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="body">
-            <header className="Body">
+            <header className="getdata">
                 {/* calling data from backend */}
                 <p>Course: {data.name}</p>
                 <p>Course code: {data.code}</p>

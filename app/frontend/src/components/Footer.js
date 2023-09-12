@@ -5,7 +5,10 @@ function Navbar() {
     <div className="footer">
 
         <div className="contacts">
-        <p>Contacts</p>  
+            <h5>Contact us:</h5>
+            <p>Phone</p>
+            <p>E-mail</p>
+            <p>Address</p>
         </div>
 
     </div>
