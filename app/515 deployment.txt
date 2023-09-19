@@ -11,10 +11,13 @@ docker run -dp 5000:5000 --name flask_container flask_app:latest
 docker run -dp 3000:3000 --name react_container react_app:latest
 http://localhost:3000
 
-
+DOCKER HUB IMAGE VERSIONS
 docker run -dp 5000:5000 --name backend jakubmroz4/backend:latest
 
 docker run -dp 3000:3000 --name frontend jakubmroz4/frontend:latest
+
+docker rm 
+
 
 
 DOCKER COMPOSE
@@ -22,6 +25,10 @@ docker-compose build
 docker-compose up
 
 DOCKER HUB
-docker push jakubmroz4/app-backend
+docker build -t jakubmroz4/backend:latest .
+docker push jakubmroz4/backend:latest
+
+docker build -t jakubmroz4/frontend:latest .
+docker push jakubmroz4/frontend:latest
 
 

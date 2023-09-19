@@ -14,7 +14,6 @@ services:
     command: ["npm", "start"]
     volumes:
       - ./frontend:/app
-      - node-modules:/frontend/node_modules
     environment:
       - NODE_ENV=development
       - REACT_APP_APIURL=http://localhost:5000
