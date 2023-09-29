@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, make_response, request
 from flask_mail import Mail, Message
+from flask_sqlalchemy import SQLAlchemy
+from config import BaseConfig
 
 app = Flask(__name__)
+app.config.from_object(BaseConfig)
 mail = Mail(app)
+db = SQLAlchemy(app)
 
 # TODO move to init and env
 app.config['MAIL_SERVER']='smtp.gmail.com'
@@ -56,11 +60,22 @@ def add_data():
 def health():
     return "Liveness check completed", 200
 
+
 def send_mail(sender, recipients):
     msg = Message('Newsletter Group16', sender=sender, recipients=recipients)
     msg.body = "Thank you for subscribing to our newsletter"
     mail.send(msg)
 
+
+class User(db.Model):
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(128), unique=True, nullable=False)
+    active = db.Column(db.Boolean(), default=True, nullable=False)
+
+    def __init__(self, email):
+        self.email = email
 
 if __name__ == "__main__":
     app.run(debug=True)

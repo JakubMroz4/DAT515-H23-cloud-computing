@@ -1,2 +1,4 @@
 flask==2.3.3
 flask_mail
+flask_sqlalchemy
+psycopg2>=2.9.4

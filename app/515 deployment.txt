@@ -1,8 +1,10 @@
 
 
 BUILDING
-docker build --tag flask_app .
-docker build --tag react_app .
+docker build --tag jakubmroz4/backend4 .
+docker build --tag jakubmroz4/frontend4 .
+
+postgresql://user:password@postgres:5432/flask_db
 
 
 RUNNING
