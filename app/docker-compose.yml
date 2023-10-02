@@ -10,10 +10,12 @@ services:
     volumes:
       - ./backend:/app
     environment:
+      PYTHONUNBUFFERED: 1
       FLASK_APP: app.py      
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: flask_db
+      POSTGRES_HOST: db
       DATABASE_PORT: 5432
     ports:
       - "5000:5000"
@@ -21,7 +23,7 @@ services:
       - db
 
   frontend:
-    image: jakubmroz4/frontend3
+    image: jakubmroz4/frontend4
     command: ["npm", "start"]
     volumes:
       - ./frontend:/app
