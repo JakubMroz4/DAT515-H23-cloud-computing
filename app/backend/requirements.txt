@@ -3,5 +3,6 @@ flask_mail
 flask_sqlalchemy
 psycopg2>=2.9.4
 flask_cors
-flask_bcrypt
 flask_session
+werkzeug
+flask-marshmallow

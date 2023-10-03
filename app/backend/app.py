@@ -2,18 +2,21 @@ from flask import Flask, jsonify, make_response, request, session
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 from config import BaseConfig
-from flask_cors import CORS
-from flask_bcrypt import Bcrypt
+from flask_cors import CORS, cross_origin
 from flask_session import Session
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
 app.config.from_object(BaseConfig)
 CORS(app, supports_credentials=True)
-bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
-#server_session = Session(app) #TODO remove?
+server_session = Session(app)
+ma=Marshmallow(app)
 
 from models import *
+post_schema = PostSchema()
+posts_schema = PostSchema(many=True)
 
 # TODO move to init and env
 app.config['MAIL_SERVER']='smtp.gmail.com'
@@ -99,6 +102,8 @@ def test_get_users():
     #return response
     return "test", 200
 
+
+@cross_origin(methods=['POST'], supports_credentials=True, headers=['Content-Type', 'Authorization'])
 @app.route('/register', methods=["POST"])
 def register():
     data = request.get_json(force=True)
@@ -111,16 +116,17 @@ def register():
     if user_exists:
         return jsonify({"error": "User already exists"}), 410
 
-    hashed_password = bcrypt.generate_password_hash(password)
+    hashed_password = generate_password_hash(password)
     new_user = User(email=email, password=hashed_password, name=name)
     db.session.add(new_user)
     db.session.commit()
 
     session["user_id"] = new_user.id
+    print(f"USER ID: {new_user.id}")
 
     return jsonify({
         "id": new_user.id,
-        "email": new_user.email
+        "name": new_user.name
     })
 
 
@@ -135,15 +141,63 @@ def login_user():
     if user is None:
         return jsonify({"error": "Unauthorized"}), 401
 
-    if not bcrypt.check_password_hash(user.password, password):
+    if not check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
 
     session["user_id"] = user.id
 
+    print(f"USER ID: {user.id}")
+
     return jsonify({
         "id": user.id,
-        "email": user.email
+        "name": user.name
     })
+
+
+
+@app.route("/authenticate")
+def authenticate():
+    user_id = session.get("user_id")
+
+    print(f"USER ID: {user_id}")
+
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = User.query.filter_by(id=user_id).first()
+    return jsonify({
+        "id": user.id,
+        "name": user.name
+    })
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user_id")
+    return "User logged out", 200
+
+
+@app.route("/submit_comment", methods=["POST"])
+def submit_comment():
+    data = request.get_json(force=True)
+
+    author = data["author"]
+    text = data["text"]
+
+    new_post = Post(author = author, text=text)
+
+    db.session.add(new_post)
+    db.session.commit()
+
+    return "Post Added", 200
+
+
+@app.route('/get_comments', methods=['GET'])
+def get_comments():
+    comments = Post.query.all()
+    results = posts_schema.dump(comments)
+    return jsonify(results)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
