@@ -5,7 +5,7 @@ metadata:
   labels:
     app: db
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: db
@@ -26,3 +26,9 @@ spec:
           value: "postgres"
         - name: POSTGRES_DB
           value: "flask_db"
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+        persistentVolumeClaim:
+          claimName: db-pvc

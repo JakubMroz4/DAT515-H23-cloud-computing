@@ -29,10 +29,18 @@ class Post(db.Model):
     def __init__(self, author, text):
         self.author = author
         self.text = text
-        self.date_posted = (str(datetime.date.today().year) + "-" + str(datetime.date.today().month) + "-" + str(datetime.date.today().day) + " "
-        + str(datetime.datetime.now().hour)) + ":" + str(datetime.datetime.now().minute)
+        self.date_posted = (str(datetime.date.today().year) + "-" + str(datetime.date.today().month) + "-" + str(datetime.date.today().day))
 
 
 class PostSchema(ma.Schema):
     class Meta:
         fields = ('id','author','text','date_posted')
+
+class Email(db.Model):
+    __tablename__ = 'emails'
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    email = db.Column(db.String(400), nullable=False)
+
+    def __init__(self, email):
+        self.email = email

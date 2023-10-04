@@ -7,6 +7,7 @@ function Main() {
     return (
       <div className="Body">
 
+          <h3>Welcome to the website!</h3>
           <Comment_Input/>
           <Comments/>
           

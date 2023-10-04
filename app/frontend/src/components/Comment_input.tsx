@@ -4,11 +4,10 @@ import React, { useState, useEffect } from "react";
 
 
 function Comment_Input() {
-    const [author, setAuthor] = useState({author: ""});
-    const [text, setText] = useState({text: ""});
+    const [author, setAuthor] = useState("");
+    const [text, setText] = useState("");
 
-    let handleSubmit = async (e) => {
-        e.preventDefault();
+    let handleSubmit = async () => {
         try {
           let res = await fetch(process.env.REACT_APP_APIURL + "/submit_comment", {
             method: "POST",
@@ -20,7 +19,7 @@ function Comment_Input() {
 
           window.location.href = "/";
 
-        } catch (err) {
+        } catch (err: any) {
           console.log(err);
           alert(err["error"]);
         }

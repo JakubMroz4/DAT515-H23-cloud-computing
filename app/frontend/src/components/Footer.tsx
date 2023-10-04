@@ -6,9 +6,9 @@ function Navbar() {
 
         <div className="contacts">
             <h5>Contact us:</h5>
-            <p>Phone</p>
-            <p>E-mail</p>
-            <p>Address</p>
+            <p>Phone: 532 65 234</p>
+            <p>E-mail: group16@group16.no</p>
+            <p>Address: Sandnes</p>
         </div>
 
     </div>

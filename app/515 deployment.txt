@@ -33,4 +33,7 @@ docker push jakubmroz4/backend:latest
 docker build -t jakubmroz4/frontend:latest .
 docker push jakubmroz4/frontend:latest
 
+docker push jakubmroz4/backend4:latest
+docker push jakubmroz4/frontend4:latest
+
 

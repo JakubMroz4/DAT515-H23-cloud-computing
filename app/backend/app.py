@@ -54,11 +54,15 @@ def get_data():
     return response
 
 
-#TODO test funct remove
+
 @app.route('/add_data', methods=["POST"])
 def add_data():
     data = request.get_json(force=True)
-    #print(data["email"])
+    email = data["email"]
+
+    new_email = Email(email=email)
+    db.session.add(new_email)
+    db.session.commit()
 
     # valid cors response
     response = make_response(jsonify(data))

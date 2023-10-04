@@ -15,7 +15,8 @@ const Comments = () => {
         <div className="Comments">
             {comments && comments.map(comment =>
                         <div className="Comment">
-                               <h4><strong>{comment.text}</strong> - <em>{comment.date_posted}</em></h4>
+                            <div> <h4><strong>{comment.author}</strong> - <em>{comment.date_posted}</em></h4></div>
+                              <h3>{comment.text}</h3>
                         </div>
                     )}
         </div>

@@ -33,7 +33,7 @@ function Newsletter() {
             </Form.Text>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="info" type="submit">
             Sign up
           </Button>
         </Form>

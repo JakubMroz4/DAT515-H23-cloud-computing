@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 function Header() {
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" bg="primary" data-bs-theme="dark">
+    <Navbar expand="lg" bg="info" data-bs-theme="dark">
       <Container>
         <Navbar.Brand href="/">Group 16</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
