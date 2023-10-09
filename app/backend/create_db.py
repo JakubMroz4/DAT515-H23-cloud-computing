@@ -12,12 +12,12 @@ with app.app_context():
 
     test_post1 = Post(
      'Adam',
-      'texttexttexttexttexttexttexttext',
+      'comment1',
     )
 
     test_post2 = Post(
         'Adam2',
-        'texttexttexttexttexttexttexttext2222',
+        'comment2',
     )
 
     db.session.add(test_post1)
