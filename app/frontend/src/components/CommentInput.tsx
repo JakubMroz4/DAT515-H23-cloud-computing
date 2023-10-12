@@ -1,6 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { wait } from '@testing-library/user-event/dist/utils';
 
 
 function Comment_Input() {
@@ -17,6 +18,7 @@ function Comment_Input() {
             }),
           });
 
+          wait(200)
           window.location.href = "/";
 
         } catch (err: any) {

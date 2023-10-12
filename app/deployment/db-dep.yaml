@@ -27,8 +27,9 @@ spec:
         - name: POSTGRES_DB
           value: "flask_db"
         volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+        - name: postgredb
+          mountPath: /var/lib/postgresql/data
       volumes:
-        persistentVolumeClaim:
-          claimName: db-pvc
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: db-pvc
