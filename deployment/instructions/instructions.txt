@@ -1,0 +1,17 @@
+app can be launched with docker-compose or kubernetes
+
+to launch the app on AWS EC2, launch an t2.medium instance (or better)
+edit incoming rules for ports of frontend and backend (default 3000 & 5000 in docker compose, 30082 & 30085 in kubernetes)
+
+connect to instance with ssh and download docker, 
+docker-compose and kubernetes with commands from commands.txt
+
+download the repository with deployment files
+git clone https://github.com/JakubMroz4/DAT515-H23-cloud-computing
+
+for both docker-compose and kubernetes you have to change the APIURL env variable for frontend / frontend-deployment
+it has to match the ip/port of the backend, on EC2 it is the public ip. 
+Default port is either 5000 (docker-compose) or 30085 (kubernetes).
+
+When starting deployment with kubernetes start with db files and wait a moment to let db initialize.
+Then continue with backend and frontend.

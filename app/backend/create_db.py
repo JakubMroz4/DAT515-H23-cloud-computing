@@ -1,7 +1,6 @@
 import time
 from app import app, db
 from models import *
-from werkzeug.security import generate_password_hash
 
 time.sleep(8)
 
