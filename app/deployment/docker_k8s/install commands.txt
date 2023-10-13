@@ -72,3 +72,5 @@ kubectl taint nodes --all  node-role.kubernetes.io/control-plane-
 
 
 sudo apt-get install lynx
+
+git clone https://github.com/JakubMroz4/DAT515-H23-cloud-computing

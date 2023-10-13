@@ -1,4 +1,4 @@
-
+NOTES on docker commands
 
 BUILDING
 docker build --tag jakubmroz4/backend4 .
@@ -37,13 +37,12 @@ docker push jakubmroz4/backend4:latest
 docker push jakubmroz4/frontend4:latest
 
 EC2
-ssh -i C:\Users\Kuba\Desktop\temp\keys\labsuser.pem ubuntu@ec2-34-229-61-248.compute-1.amazonaws.com
-
+ssh -i C:\Users\Kuba\Desktop\temp\keys\labsuser.pem ubuntu@ec2-3-88-234-27.compute-1.amazonaws.com
 Instance, allow all traffic and t2 medium, 10gb storage
 
+git clone https://github.com/JakubMroz4/DAT515-H23-cloud-computing
 
-
-
+kubectl logs deployment/backend
 
 
 

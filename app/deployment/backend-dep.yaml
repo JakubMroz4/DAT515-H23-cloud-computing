@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
       - name: backend
-        image: jakubmroz4/backend4
+        image: jakubmroz4/backend5
+        command: ["/bin/sh"]
+        args: ["-c", "python3 ./create_db.py"]
         ports:
         - containerPort: 5000
         env:
         - name: FLASK_APP
           value: "app.py"
-        - name: PYTHONUNBUFFERED
-          value: 1
         - name: POSTGRES_USER
           value: "postgres"
         - name: POSTGRES_PASSWORD
@@ -33,7 +33,7 @@ spec:
         - name: POSTGRES_HOST
           value: "db"
         - name: DATABASE_PORT
-          value: 5432
+          value: "5432"
         livenessProbe:
           httpGet:
             path: /health
